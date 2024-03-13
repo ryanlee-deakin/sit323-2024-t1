@@ -1,4 +1,21 @@
 {
+  "name": "sit323-2024-t1",
+  "version": "1.0.0",
+  "description": "sit 323 t1 week 2 prac",
+  "main": "server_get.js",
+  "scripts": {
+    "simple": "node server.js",
+    "start": "node server_get.js"
+  },
+  "repository": {
+    "url": "git+https://github.com/ryanlee-deakin/sit323-2024-t1.git"
+  },
+  "author": "Lee Ryan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ryanlee-deakin/sit323-2024-t1/issues"
+  },
+  "homepage": "https://github.com/ryanlee-deakin/sit323-2024-t1#readme",
   "dependencies": {
     "express": "^4.18.3"
   }
