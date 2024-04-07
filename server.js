@@ -21,11 +21,10 @@ const express = require('express'),
     };
 
 // enable logging to console as well as files...
-// if (process.env.NODE_ENV !== 'production') {
     logger.add(new winston.transports.Console({
         format: winston.format.simple(),
     }));
-// }
+    
 app.get('/', (req, res) => {
     res.status(200).json({ statuscode: 200, msg: 'Server running ok.' });
     logger.verbose(`${Date.now()} [${req.ip}] path: ${req.path}`);
