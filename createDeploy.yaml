@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeployment
+  labels:
+    app: myapp
+    tier: frontend
+    env: ryanleedeakin
+spec:
+  # modify replicas according to your case
+  replicas: 3
+  selector:
+    matchLabels:
+      env: ryanleedeakin
+  template:
+    metadata:
+      labels:
+        env: ryanleedeakin
+    spec:
+      containers:
+      - name: mynode
+        image: ryanleedeakin/docker_calculator_app:latest
+        ports:
+        - containerPort: 3040
