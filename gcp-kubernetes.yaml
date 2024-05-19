@@ -1,0 +1,43 @@
+---
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: "docker-calculator-microservice"
+  namespace: "default"
+  labels:
+    app: "docker-calculator-microservice"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: "docker-calculator-microservice"
+  template:
+    metadata:
+      labels:
+        app: "docker-calculator-microservice"
+    spec:
+      containers:
+      - name: "docker-calculator-app-sha256-1"
+        image: "australia-southeast1-docker.pkg.dev/sit323-24t1-lee-ryan-27db57b/sit323-2024-t1/docker_calculator_app@sha256:ade4604d7f457d0bd57d32c49a291db3957eccd8fec6298f982311ff771a2f3e"
+---
+apiVersion: "autoscaling/v2"
+kind: "HorizontalPodAutoscaler"
+metadata:
+  name: "docker-calculator-microservice-hpa-lhk5"
+  namespace: "default"
+  labels:
+    app: "docker-calculator-microservice"
+spec:
+  scaleTargetRef:
+    kind: "Deployment"
+    name: "docker-calculator-microservice"
+    apiVersion: "apps/v1"
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+  - type: "Resource"
+    resource:
+      name: "cpu"
+      target:
+        type: "Utilization"
+        averageUtilization: 80
